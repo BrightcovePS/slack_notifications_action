@@ -1,0 +1,52 @@
+name: "Slack Notification"
+
+on:
+  workflow_call:
+    inputs:
+      slack_token:
+        required: true
+        type: string
+      slack_channel_id:
+        required: true
+        type: string
+      status:
+        required: true
+        type: string
+      environment:
+        required: true
+        type: string
+      actor:
+        required: true
+        type: string
+      run_id:
+        required: true
+        type: string
+      ts:
+        required: false
+        type: string
+    outputs:
+      ts:
+        description: "Message timestamp for updating Slack messages"
+        value: ${{ jobs.notify.outputs.ts }}
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    outputs:
+      ts: ${{ steps.slack.outputs.ts }}
+
+    steps:
+      - name: Checkout Action Repository
+        uses: actions/checkout@v3
+
+      - name: Send Slack Notification
+        id: slack
+        uses: ./  # Uses the action defined in action.yml
+        with:
+          slack_token: ${{ inputs.slack_token }}
+          slack_channel_id: ${{ inputs.slack_channel_id }}
+          status: ${{ inputs.status }}
+          environment: ${{ inputs.environment }}
+          actor: ${{ inputs.actor }}
+          run_id: ${{ inputs.run_id }}
+          ts: ${{ inputs.ts }}
