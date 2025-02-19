@@ -52,6 +52,10 @@ async function run() {
                               },
                               {
                                 type: 'mrkdwn',
+                                text: `*Status:* ${status}`
+                              },
+                              {
+                                type: 'mrkdwn',
                                 text: `*Triggered by:* ${actor}`
                               }   ,                           
                               {
@@ -62,7 +66,7 @@ async function run() {
                             accessory: {
                               type: 'image',
                               image_url: image,
-                              alt_text: "computer thumbnail"
+                              alt_text: status
                             }
                         }
                     ]
