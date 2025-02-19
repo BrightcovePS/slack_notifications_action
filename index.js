@@ -83,6 +83,7 @@ async function run() {
                         elements: [
                           {
                             type: 'button',
+                            action_id: 'view_details',
                             text: {
                               type: 'plain_text',
                               text: 'View Details'
