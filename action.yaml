@@ -2,6 +2,10 @@ name: "Deployment Status to Slack"
 description: "Send deployment status updates to Slack"
 author: "Your Name"
 
+runs:
+  using: 'node20'
+  main: 'index.js'
+
 inputs:
   slack_token:
     description: "Slack bot user OAuth token"
@@ -24,7 +28,3 @@ inputs:
   ts:
     description: "Slack message timestamp for updating an existing message"
     required: false
-
-drivers:
-  using: "node20"
-  main: "index.js"
