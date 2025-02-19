@@ -39,14 +39,28 @@ async function run() {
                     color: color,
                     blocks: [
                         {
+                          type: 'section',
+                          text: {
+                            type: 'mrkdwn',
+                            text: '*${{ env.NAME }} deployment started*'
+                          }
+                        },
+                        {
                             type: 'section',
-                            text: {
+                            fields: [
+                              {
                                 type: 'mrkdwn',
-                                text: `${emoji} *Deployment ${status.toUpperCase()}*\n` +
-                                      `*Environment:* ${environment}\n` +
-                                      `*Triggered by:* ${actor}\n` +
-                                      `*<${githubRunUrl}|View Deployment>*`
-                            }
+                                text: `*Environment:* ${environment}`
+                              },
+                              {
+                                type: 'mrkdwn',
+                                text: `*Action* *<${githubRunUrl}|View Action>*`
+                              },
+                              {
+                                type: 'mrkdwn',
+                                text: `*Triggered by:* ${actor}\n`
+                              }                              
+                            ]
                         }
                     ]
                 }
