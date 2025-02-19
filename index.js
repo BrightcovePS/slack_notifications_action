@@ -46,19 +46,11 @@ async function run() {
                             fields: [
                               {
                                 type: 'mrkdwn',
-                                text: `*Component:* ${name}\n`
+                                text: `*Component:* ${name}`
                               },
                               {
                                 type: 'mrkdwn',
-                                text: `*Environment:* ${environment}\n`
-                              },
-                              {
-                                type: 'mrkdwn',
-                                text: `\u200b`
-                              },
-                              {
-                                type: 'mrkdwn',
-                                text: `\u200b`
+                                text: `*Environment:* ${environment}`
                               },
                               {
                                 type: 'mrkdwn',
@@ -66,7 +58,7 @@ async function run() {
                               },
                               {
                                 type: 'mrkdwn',
-                                text: `*Triggered by:* <${actorUrl}|${actor}>`
+                                text: `*Triggered By:* <${actorUrl}|${actor}>`
                               }
                             ],
                             accessory: {
@@ -107,7 +99,7 @@ async function run() {
             core.setFailed(`Failed to send Slack notification: ${response.data.error}`);
         } else {
             core.info(`Slack notification sent successfully. TS: ${response.data.ts}`);
-            core.setOutput('ts', response.data.ts); // Store TS for updates
+            core.setOutput('ts', response.data.ts);
         }
     } catch (error) {
         core.setFailed(`Failed to send Slack notification: ${error.message}`);
