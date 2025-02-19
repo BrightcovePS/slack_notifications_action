@@ -54,11 +54,11 @@ async function run() {
                               },
                               {
                                 type: 'mrkdwn',
-                                text: `  \n`
+                                text: `\u200b`
                               },
                               {
                                 type: 'mrkdwn',
-                                text: `  \n`
+                                text: `\u200b`
                               },
                               {
                                 type: 'mrkdwn',
@@ -79,18 +79,14 @@ async function run() {
                           type: "divider"
                         },
                         {
-                        type: 'actions',
-                        elements: [
-                          {
-                            type: 'button',
-                            text: {
-                              type: 'plain_text',
-                              text: 'View Details'
-                            },
-                            url: githubRunUrl
-                          }
-                        ]
-                      }
+                          type: "section",
+                          fields: [
+                            {
+                              type: "mrkdwn",
+                              text: `<${githubRunUrl}|View Action>`
+                            }
+                          ]
+                        }
                     ]
                 }
             ]
