@@ -46,19 +46,19 @@ async function run() {
                             fields: [
                               {
                                 type: 'mrkdwn',
-                                text: `*Component:* ${name}`
+                                text: `*Component*\n${name}`
                               },
                               {
                                 type: 'mrkdwn',
-                                text: `*Environment:* ${environment}`
+                                text: `*Environment*\n${environment}`
                               },
                               {
                                 type: 'mrkdwn',
-                                text: `*Status:* ${status}`
+                                text: `*Status*\n${status}`
                               },
                               {
                                 type: 'mrkdwn',
-                                text: `*Triggered By:* <${actorUrl}|${actor}>`
+                                text: `*Triggered By*\n<${actorUrl}|${actor}>`
                               }
                             ],
                             accessory: {
