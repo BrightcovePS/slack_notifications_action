@@ -1,0 +1,24 @@
+name: "Deployment Status to Slack"
+description: "Send deployment status updates to Slack"
+author: "Your Name"
+
+inputs:
+  slack_webhook:
+    description: "Slack webhook URL"
+    required: true
+  status:
+    description: "Deployment status (started, success, failure)"
+    required: true
+  environment:
+    description: "Deployment environment (e.g., production, staging)"
+    required: true
+  actor:
+    description: "User who triggered the action"
+    required: true
+  run_id:
+    description: "GitHub Actions run ID"
+    required: true
+
+drivers:
+  using: "node20"
+  main: "index.js"
