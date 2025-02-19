@@ -3,8 +3,11 @@ description: "Send deployment status updates to Slack"
 author: "Your Name"
 
 inputs:
-  slack_webhook:
-    description: "Slack webhook URL"
+  slack_token:
+    description: "Slack bot user OAuth token"
+    required: true
+  slack_channel_id:
+    description: "Slack channel ID to send the message to"
     required: true
   status:
     description: "Deployment status (started, success, failure)"
@@ -18,6 +21,9 @@ inputs:
   run_id:
     description: "GitHub Actions run ID"
     required: true
+  ts:
+    description: "Slack message timestamp for updating an existing message"
+    required: false
 
 drivers:
   using: "node20"
