@@ -9,6 +9,7 @@ async function run() {
         const environment = core.getInput('environment');
         const name = core.getInput('name');
         const actor = core.getInput('actor');
+        const actorUrl = `https://github.com/${actor}`;
         const runId = core.getInput('run_id');
         const ts = core.getInput('ts') || null;
         const githubRepo = process.env.GITHUB_REPOSITORY;
@@ -53,11 +54,19 @@ async function run() {
                               },
                               {
                                 type: 'mrkdwn',
+                                text: `\n`
+                              },
+                              {
+                                type: 'mrkdwn',
+                                text: `\n`
+                              },
+                              {
+                                type: 'mrkdwn',
                                 text: `*Status:* ${status}`
                               },
                               {
                                 type: 'mrkdwn',
-                                text: `*Triggered by:* ${actor}`
+                                text: `*Triggered by:* <${actorUrl}|${actor}>`
                               }
                             ],
                             accessory: {
@@ -70,19 +79,18 @@ async function run() {
                           type: "divider"
                         },
                         {
-                          type: "actions",
-                          elements: [
-                            {
-                              type: "button",
-                              text: {
-                                type: "plain_text",
-                                emoji: true,
-                                text: "View Action",
-                              },
-                              url: githubRunUrl
-                            }
-                          ]
-                        }
+                        type: 'actions',
+                        elements: [
+                          {
+                            type: 'button',
+                            text: {
+                              type: 'plain_text',
+                              text: 'View Details'
+                            },
+                            url: githubRunUrl
+                          }
+                        ]
+                      }
                     ]
                 }
             ]
