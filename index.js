@@ -35,6 +35,7 @@ async function run() {
 
         const messagePayload = {
             channel: slackChannel,
+            ...(ts && { ts }),
             attachments: [
                 {
                     color: color,
@@ -74,11 +75,11 @@ async function run() {
             ]
         };
 
-        if (ts) {
-            messagePayload.ts = ts;
-        }
+        const slackUrl = ts 
+          ? 'https://slack.com/api/chat.update'
+          : 'https://slack.com/api/chat.postMessage';
 
-        const response = await axios.post('https://slack.com/api/chat.postMessage', messagePayload, {
+        const response = await axios.post(slackUrl, messagePayload, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${slackToken}`
