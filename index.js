@@ -45,11 +45,11 @@ async function run() {
                             fields: [
                               {
                                 type: 'mrkdwn',
-                                text: `*Component:* ${name}`
+                                text: `*Component:* ${name}\n`
                               },
                               {
                                 type: 'mrkdwn',
-                                text: `*Environment:* ${environment}`
+                                text: `*Environment:* ${environment}\n`
                               },
                               {
                                 type: 'mrkdwn',
@@ -58,10 +58,6 @@ async function run() {
                               {
                                 type: 'mrkdwn',
                                 text: `*Triggered by:* ${actor}`
-                              }   ,                           
-                              {
-                                type: 'mrkdwn',
-                                text: `*<${githubRunUrl}|View Action>*`
                               }
                             ],
                             accessory: {
@@ -69,6 +65,23 @@ async function run() {
                               image_url: image,
                               alt_text: status
                             }
+                        },
+                        {
+                          type: "divider"
+                        },
+                        {
+                          type: "actions",
+                          elements: [
+                            {
+                              type: "button",
+                              text: {
+                                type: "plain_text",
+                                emoji: true,
+                                text: "View Action",
+                              },
+                              url: githubRunUrl
+                            }
+                          ]
                         }
                     ]
                 }
