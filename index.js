@@ -17,20 +17,20 @@ async function run() {
         let emoji, color;
         switch (status) {
             case 'started':
-                emoji = ':large_yellow_circle:';
+                image = 'http://bgs-static-assets.s3-website-us-east-1.amazonaws.com/started.png';
                 color = '#f7b500';
                 break;
             case 'success':
-                emoji = ':white_check_mark:';
-                color = '#2eb886';
+                image = 'http://bgs-static-assets.s3-website-us-east-1.amazonaws.com/success.png';
+                color = '#4bb543';
                 break;
             case 'failure':
-                emoji = ':x:';
-                color = '#d00000';
+                image = 'http://bgs-static-assets.s3-website-us-east-1.amazonaws.com/failure.png';
+                color = '#fc100d';
                 break;
             default:
-                emoji = ':grey_question:';
-                color = '#cccccc';
+                image = 'http://bgs-static-assets.s3-website-us-east-1.amazonaws.com/confused.png';
+                color = '#8b50ff';
         }
 
         const messagePayload = {
@@ -52,7 +52,7 @@ async function run() {
                               },
                               {
                                 type: 'mrkdwn',
-                                text: `*Triggered by:* ${actor}\n`
+                                text: `*Triggered by:* ${actor}`
                               }   ,                           
                               {
                                 type: 'mrkdwn',
@@ -61,7 +61,7 @@ async function run() {
                             ],
                             accessory: {
                               type: 'image',
-                              image_url: "https://api.slack.com/img/blocks/bkb_template_images/approvalsNewDevice.png",
+                              image_url: image,
                               alt_text: "computer thumbnail"
                             }
                         }
@@ -71,7 +71,7 @@ async function run() {
         };
 
         if (ts) {
-            messagePayload.ts = ts; // Update the message instead of posting a new one
+            messagePayload.ts = ts;
         }
 
         const response = await axios.post('https://slack.com/api/chat.postMessage', messagePayload, {
